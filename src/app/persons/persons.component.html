@@ -1,3 +1,4 @@
-<div *ngFor="let items of persons">
-  <p>{{ items }}</p>
+<div *ngFor="let per of personList">
+  <p (click)="deleteAPerson(per)">{{ per }}</p>
 </div>
+
