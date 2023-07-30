@@ -14,14 +14,14 @@ export class RecipesPage implements OnInit {
   constructor(private recipesService: RecipesService) { }
 
   ngOnInit() {
-    // this.recipesSubs = this.recipesService.recipesChanged.subscribe(recipe => {
-      //   this.recipes = recipe;
-      // })
+    // this.recipesSubs = this.recipesService.updated.subscribe(recipe => {
+      //     this.recipes = recipe;
+      //   })
     }
     
-  ionViewWillEnter() {
-    console.log("will enter");
+    ionViewWillEnter() {
     this.recipes = this.recipesService.getAllRecipes()
+    console.log("will enter");
   }
 
   ionViewDidEnter() {
