@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../recipe.model'
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,7 +46,7 @@ export class RecipesService {
   constructor() { }
 
   getAllRecipes() {
-    return [...this.recipes]
+    return this.recipes
   }
   
   getRecipe(recipeId: string) {
