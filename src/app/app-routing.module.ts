@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'bookings',
     loadChildren: () => import('./bookings/bookings.module').then( m => m.BookingsPageModule)
   },
+  {
+    path: 'ionic-test',
+    loadChildren: () => import('./test/ionic-test/ionic-test.module').then( m => m.IonicTestPageModule)
+  },
  
 ];
 

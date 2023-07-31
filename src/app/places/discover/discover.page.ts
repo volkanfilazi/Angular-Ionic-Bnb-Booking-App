@@ -32,4 +32,8 @@ export class DiscoverPage implements OnInit {
     console.log("did leave");  
   }
 
+  testCalled() {
+    this.placesService.testMethod()
+  }
+
 }
