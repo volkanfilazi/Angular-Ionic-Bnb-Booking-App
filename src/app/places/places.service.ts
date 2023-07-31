@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
+import { Offer } from './offer.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,9 +30,33 @@ export class PlacesService {
     ),
   ];
 
+  private _offers: Offer[] = [
+    new Offer(
+      'o1',
+      'volkan',
+      130.10
+    ),
+    new Offer(
+      'o2',
+      'volkan2',
+      134.10
+    )
+  ]
+
   get places() {
     return [...this._places];
   }
 
+  testMethod(){
+    console.log("test"); 
+  }
+
+  getPlace(id: string) {
+    return this._places.find(p => p.id === id);
+  }
+
+  get offers() {
+    return [...this._offers];
+  }
   constructor() {}
 }
