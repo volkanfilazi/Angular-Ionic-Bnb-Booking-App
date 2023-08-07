@@ -14,6 +14,10 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 ```
 ng serve || ionic serve
 ```
+## Future
+- Bnb Booking Native App
+- Login System
+- Offer System
 
 ## Languages and Packages used
 - Angular
