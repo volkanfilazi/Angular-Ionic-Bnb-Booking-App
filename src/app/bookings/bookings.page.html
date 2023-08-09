@@ -8,9 +8,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">bookings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of allBookings" #slidingBooking>
+    <ion-card>
+      <ion-item>
+          <ion-card-content>
+            <ion-label>{{ item.placeTitle }}</ion-label>
+            <ion-label>Guest Number: {{ item.guestNumber }}</ion-label>
+          </ion-card-content>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="danger" (click)="onCancelBooking(item.id, slidingBooking)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-card>
+      </ion-item-sliding>
+  </ion-list>
 </ion-content>
