@@ -9,6 +9,16 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 </div>
 
+## Install
+
+```
+npm install
+npm install -g @angular/cli
+npm i -g @ionic/cli
+
+https://nodejs.org/en/download
+```
+
 ## How to Start
 
 ```
@@ -16,7 +26,7 @@ ng serve || ionic serve
 ```
 ## Future
 - Bnb Booking Native App
-- Login System
+- Login System (Local)
 - Offer System
 
 ## Languages and Packages used
