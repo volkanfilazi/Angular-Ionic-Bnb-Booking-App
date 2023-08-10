@@ -11,21 +11,21 @@ export class PlacesService {
       'p1',
       'Manhatten Mansion',
       'In the heart of New York City',
-      'https://images.unsplash.com/photo-1532960401447-7dd05bef20b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+      'https://www.housedigest.com/img/gallery/the-best-celeb-owned-nyc-apartments/intro-1639672877.jpg',
       149.99
     ),
     new Place(
       'p2',
-      'Manhatten Mansion2',
+      'New York City',
       'In the heart of New York City',
-      'https://images.unsplash.com/photo-1532960401447-7dd05bef20b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+      'https://thumbs.cityrealty.com/assets/smart/1004x/webp/1/16/1655f4e3904fb79cb987ab7755d2b3f4b8f37f88/1-city-point.jpg',
       169.99
     ),
     new Place(
       'p3',
-      'Manhatten Mansion3',
-      'In the heart of New York City',
-      'https://images.unsplash.com/photo-1532960401447-7dd05bef20b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmV3JTIweW9yayUyMGNpdHl8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+      'Chicago',
+      'In the heart of Chicago',
+      'https://i.ytimg.com/vi/HEVnJWV_eXA/maxresdefault.jpg',  
       179.99
     ),
   ];

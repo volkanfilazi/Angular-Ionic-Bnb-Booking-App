@@ -1,9 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>auth</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button color="primary" (click)="onLogin()">Login</ion-button>
+  <ion-list>
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-input label="Email:"></ion-input>
+          <ion-input label="Password" type="password"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <div class="ion-text-center">
+    <ion-button color="primary" (click)="onLogin()" *ngIf="!isLoading">Login</ion-button>
+  </div>
 </ion-content>
