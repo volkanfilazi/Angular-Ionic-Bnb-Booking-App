@@ -11,7 +11,7 @@ import { CreateBookingComponent } from '../../../bookings/create-booking/create-
   styleUrls: ['./place-detail.page.scss'],
 })
 export class PlaceDetailPage implements OnInit {
-  place?:Place;
+  place?: Place;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,19 +19,19 @@ export class PlaceDetailPage implements OnInit {
     private placesService: PlacesService,
     private modalCntrl: ModalController,
     private actionSheetCntrl: ActionSheetController
-    ) { }
+  ) { }
 
-    ngOnInit() {
-      this.route.paramMap.subscribe((map) => {
-        if (!map.has('placeId')) {
-          this.navCtrl.navigateBack('/tabs/discover')
-          return;
-        }
-        if(map.has('placeId')){
-          this.place = this.placesService.places.find(item => item.id === map.get('placeId'));
-        }
-      });
-    }
+  ngOnInit() {
+    this.route.paramMap.subscribe((map) => {
+      if (!map.has('placeId')) {
+        this.navCtrl.navigateBack('/tabs/discover')
+        return;
+      }
+      if (map.has('placeId')) {
+        this.place = this.placesService.places.find(item => item.id === map.get('placeId'));
+      }
+    });
+  }
 
   onBookPlace() {
     this.actionSheetCntrl.create({
@@ -43,12 +43,12 @@ export class PlaceDetailPage implements OnInit {
             this.openBookingModal('select');
           }
         },
-        {
-          text: 'Random Date',
-          handler: () => {
-            this.openBookingModal('random')
-          }
-        },
+        // {
+        //   text: 'Random Date',
+        //   handler: () => {
+        //     this.openBookingModal('random')
+        //   }
+        // },
         {
           text: 'Cancel',
           role: 'cancel'
@@ -56,25 +56,23 @@ export class PlaceDetailPage implements OnInit {
       ]
     }).then(actionSheetEl => {
       actionSheetEl.present();
-    })  
+    })
   }
 
   openBookingModal(mode: 'select' | 'random') {
     console.log(mode);
-    if(mode === 'select') {
-      this.modalCntrl.create({
-        component: CreateBookingComponent,
-        componentProps: { selectedPlace: this.place}
-      }).then(modalEl => {
-        modalEl.present();
-        return modalEl.onDidDismiss();
-      }).then(resultData => {
-        console.log(resultData.data, resultData.role);
-        if(resultData.role === 'confirm') {
-          console.log('booked!');     
-        }
-      })
-    }
-    
+    this.modalCntrl.create({
+      component: CreateBookingComponent,
+      componentProps: { selectedPlace: this.place, selectedMode: mode }
+    }).then(modalEl => {
+      modalEl.present();
+      return modalEl.onDidDismiss();
+    }).then(resultData => {
+      console.log(resultData.data, resultData.role);
+      if (resultData.role === 'confirm') {
+        console.log('booked!');
+      }
+    })
+
   }
 }

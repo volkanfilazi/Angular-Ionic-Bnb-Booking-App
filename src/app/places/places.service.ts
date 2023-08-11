@@ -12,21 +12,27 @@ export class PlacesService {
       'Manhatten Mansion',
       'In the heart of New York City',
       'https://www.housedigest.com/img/gallery/the-best-celeb-owned-nyc-apartments/intro-1639672877.jpg',
-      149.99
+      149.99,
+      new Date('2023-01-01'),
+      new Date('2023-12-12')
     ),
     new Place(
       'p2',
       'New York City',
       'In the heart of New York City',
       'https://thumbs.cityrealty.com/assets/smart/1004x/webp/1/16/1655f4e3904fb79cb987ab7755d2b3f4b8f37f88/1-city-point.jpg',
-      169.99
+      169.99,
+      new Date('2023-01-01'),
+      new Date('2023-12-12')
     ),
     new Place(
       'p3',
       'Chicago',
       'In the heart of Chicago',
       'https://i.ytimg.com/vi/HEVnJWV_eXA/maxresdefault.jpg',  
-      179.99
+      179.99,
+      new Date('2023-01-01'),
+      new Date('2023-12-12')
     ),
   ];
 
