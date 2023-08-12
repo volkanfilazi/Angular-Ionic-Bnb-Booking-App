@@ -8,21 +8,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment value="all" (ionChange)="onFilterUpdate($event)">
+  <ion-segment value="all" (ionChange)="onFilterUpdate($event)" size="12" size-sm="8" offset-sm="2">
     <ion-segment-button value="all">All Places</ion-segment-button>
     <ion-segment-button value="bookable">Bookable Places</ion-segment-button>
   </ion-segment>
-  <ion-grid>
+  <ion-grid *ngIf="copyPlacelist.length <= 0">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <p>There are no bookable places right now, please come back later!</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="copyPlacelist.length > 0">
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
         <ion-card>
           <ion-card-header>
-            <ion-card-title>{{ placesList[0].title }}</ion-card-title>
-            <ion-card-subtitle>{{ placesList[0].price | currency }} / Night</ion-card-subtitle>
+            <ion-card-title>{{ copyPlacelist[0].title }}</ion-card-title>
+            <ion-card-subtitle>{{ copyPlacelist[0].price | currency }} / Night</ion-card-subtitle>
           </ion-card-header>
-          <ion-img [src]="placesList[0].imageUrl"></ion-img>
+          <ion-img [src]="copyPlacelist[0].imageUrl"></ion-img>
           <ion-card-content>
-            <p>{{ placesList[0].description }}</p>
+            <p>{{ copyPlacelist[0].description }}</p>
           </ion-card-content>
           <div class="ion-text-right">
             <ion-button fill="clear" color="primary" [routerLink]="['/', 'tabs', 'discover', placesList[0].id]">More</ion-button>
@@ -35,7 +42,7 @@
   <ion-row>
     <ion-col size="12" size-sm="8" offset-sm="2" text-center>
       <ion-list>
-        <ion-item *ngFor="let item of placesList" 
+        <ion-item *ngFor="let item of copyPlacelist.slice(1)" 
         [routerLink]="['/', 'tabs', 'discover', item.id]" 
         detail>
           <ion-thumbnail slot="start">
