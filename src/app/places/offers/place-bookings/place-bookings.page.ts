@@ -14,22 +14,24 @@ export class PlaceBookingsPage implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private navController: NavController,
-    private placeService: PlacesService
+    private placesService: PlacesService
      ) {}
 
   ngOnInit() {
-    this.router.paramMap.subscribe((map) => {
-      if (!map.has('placeId')) {
-        this.navController.navigateBack('/tabs/offers')
-        return;
-      }
-      if(map.has('placeId')){
-        console.log(this.place);
-        
-        console.log(map.has('placeId'));
-        
-        this.place = this.placeService.places.find(item => item.id === map.get('placeId'));
-      }
+    this.router.paramMap.subscribe((mapp) => {
+      const id = mapp.get('placeId')
+  
+        if (!id) {
+          this.navController.navigateBack('/tabs/offers')
+          return;
+        }
+        if (id) {
+          this.placesService.getPlace(id).subscribe(place => {
+            this.place = place;
+          })
+        }
     });
   }
+
+  
 }
