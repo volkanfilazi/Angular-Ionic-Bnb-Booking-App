@@ -12,7 +12,7 @@
   <ion-list>
     <ion-item>{{ place?.description }}</ion-item>
     <ion-item><ion-text color="success">{{ place?.price | currency }}</ion-text></ion-item>
-    <div class="ion-text-center">
+    <div class="ion-text-center" *ngIf="isBookable">
       <ion-button color="primary" (click)="onBookPlace()">Book</ion-button>
     </div>
   </ion-list>

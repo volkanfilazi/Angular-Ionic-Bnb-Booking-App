@@ -12,26 +12,20 @@ import { NgForm } from '@angular/forms';
 export class AuthPage implements OnInit {
   isLoading = false
   isLogin = true
+  checkAuthService?: boolean
   constructor(
     private authService: AuthService,
     private router: Router,
     private loadingCntrl: LoadingController
-    ) { }
+  ) { }
 
   ngOnInit() {
+    this.authService.checkAuth.subscribe((check) => {
+      this.checkAuthService = check;
+    })
   }
   onLogin() {
-    this.isLoading = true;
-    this.authService.login();
-    this.loadingCntrl.create({ keyboardClose: true, message: 'Loading in ...'})
-    .then(loadingEl => {
-      loadingEl.present();
-      setTimeout(() => {
-        this.isLoading = false
-        loadingEl.dismiss();
-        this.router.navigateByUrl('/tabs/discover');
-      },1500)
-    })
+
   }
 
   onSwitchAuthMode() {
@@ -39,17 +33,26 @@ export class AuthPage implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if(!form.valid) {
-      return;
-    }
     const email = form.value.email
-    if(this.isLogin) {
-      console.log("send a request to login server");
-      
-    }else {
-      console.log("send a request to register server");
-      
-    }
+    const password = form.value.password
     
+    this.authService.login(email, password);
+    if (!form.valid) {
+      return;
+    } else {
+      if (this.checkAuthService === true) {
+        this.isLoading = true;
+        this.loadingCntrl.create({ keyboardClose: true, message: 'Loading in ...' })
+          .then(loadingEl => {
+            loadingEl.present();
+            setTimeout(() => {
+              this.isLoading = false
+              loadingEl.dismiss();
+              this.router.navigateByUrl('/tabs/discover');
+            }, 1500)
+          })
+      }
+    }
+
   }
 }
