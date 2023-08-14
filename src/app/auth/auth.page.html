@@ -49,4 +49,5 @@
       <ion-button type="submit" color="primary" (click)="onLogin()" *ngIf="!isLoading" [disabled]="!f.valid">Login</ion-button>
     </div>
   </form>
+  <ion-item *ngIf="!checkAuthService">Email or Password isnt correct!</ion-item>
 </ion-content>
