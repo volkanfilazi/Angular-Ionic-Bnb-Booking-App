@@ -28,3 +28,16 @@
 .ion-invalid.ion-touched ion-label {
     color: var(--ion-color-danger);
 }
+
+.form-input {
+    border: 1px rgb(85, 86, 85) solid;
+    border-radius: 10px;
+    outline: none;
+    --padding-start: 12px;
+    --padding-end: 12px;
+}
+
+.form-error {
+    color:red;
+}
+
