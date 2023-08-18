@@ -51,9 +51,9 @@
           >
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row *ngIf="loginErrorService !== '' ">
         <ion-col size-sm="6" offset-sm="3">
-          <ion-item *ngIf="loginErrorService !== ''">
+          <ion-item>
             <ion-text color="danger">{{ loginErrorService }}</ion-text>
           </ion-item>
         </ion-col>

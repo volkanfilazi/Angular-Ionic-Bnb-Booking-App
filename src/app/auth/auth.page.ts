@@ -20,27 +20,28 @@ export class AuthPage implements OnInit {
     private loadingCntrl: LoadingController
   ) { }
 
-  ngOnInit() {}
-    
-    onSwitchAuthMode() {
-      this.isLogin = !this.isLogin
-    }
-    
-    onSubmit(form: NgForm) {
-      const email = form.value.email
-      const password = form.value.password
-      
-      this.authService.login(email, password);
-      this.checkAuthService = this.authService.checkAuth
-      console.log(form);
-      if (!form.valid) {
-        return;
-      } else {
+  ngOnInit() { 
+    this.loginErrorService = this.authService.loginErrorMessage;
+  }
+
+  onSwitchAuthMode() {
+    this.isLogin = !this.isLogin
+  }
+
+  onSubmit(form: NgForm) {
+    const email = form.value.email
+    const password = form.value.password
+    this.authService.login(email, password);
+    this.checkAuthService = this.authService.checkAuth
+    console.log(form);
+    if (!form.valid) {
+      return;
+    } else {
       console.log(this.checkAuthService);
       if (this.checkAuthService === true) {
-        console.log("working");
+        this.loginErrorService = ''
         this.isLoading = true;
-        
+
         this.loadingCntrl.create({ keyboardClose: true, message: 'Loading in ...' })
           .then(loadingEl => {
 
@@ -52,9 +53,10 @@ export class AuthPage implements OnInit {
               this.router.navigateByUrl('/tabs/discover');
             }, 1500)
           })
+      }else {
+        this.loginErrorService = this.authService.loginErrorMessage;
       }
     }
-
   }
 
   onRegister(formRegister: NgForm) {
