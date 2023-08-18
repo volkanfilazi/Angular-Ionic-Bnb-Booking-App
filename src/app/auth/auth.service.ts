@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, delay, map, take, tap } from 'rxjs';
 import { User } from './user.model';
 import { AuthPage } from './auth.page';
+import { NgClass } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private _checkAuth = false;
-  private _loginErrorMessage = new BehaviorSubject<string>('');
+  private _loginErrorMessage = <string>('');
   private _localUsers = <User[]>[]
 
   localUsersTrigger() {
@@ -28,7 +29,7 @@ export class AuthService {
   }
 
   get loginErrorMessage() {
-    return this._loginErrorMessage.asObservable();
+    return this._loginErrorMessage;
   }
 
   private _userIsAuthenticated = false
@@ -49,12 +50,12 @@ export class AuthService {
       console.log("test");
       
       if (p.email === email && p.password === password) {
-        this._checkAuth = true
-        console.log("hey",this.checkAuth);
-        
+        this._checkAuth = true        
         this._userIsAuthenticated = true
+        this._loginErrorMessage = ''
       }else {
         this._checkAuth = false
+        this._loginErrorMessage = 'Email or password isnt valid'
       }
     })
   }
@@ -80,7 +81,6 @@ export class AuthService {
     let userlist = JSON.stringify(this.localUsers)
     localStorage.setItem("userList", userlist)
     this.localUsersTrigger()
-
-
   }
+
 }
