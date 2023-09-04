@@ -28,6 +28,7 @@ ng serve || ionic serve
 - Bnb Booking Native App
 - Login System (Local)
 - Offer System
+- Edit
 
 ## Languages and Packages used
 - Angular
